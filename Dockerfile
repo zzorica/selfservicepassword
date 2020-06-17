@@ -6,7 +6,7 @@ ARG SSP_URL=https://github.com/ltb-project/self-service-password/archive/v${SSP_
 RUN cd /var/www/ && \
     curl -SL $SSP_URL | tar -xz -C /var/www/ && \
     mv self-service-password-${SSP_VERSION}/* html/ && \
-    rm -rf self-service-password-${SSP_VERSION}
+    rm -rf self-service-password-${SSP_VERSION} 
 
 COPY ssp.conf /etc/apache2/sites-enabled/000-default.conf
 COPY config.inc.local.php /var/www/html/conf/config.inc.local.php
@@ -16,7 +16,9 @@ ADD https://raw.githubusercontent.com/mlocati/docker-php-extension-installer/mas
 RUN chmod uga+x /usr/local/bin/install-php-extensions && sync && \
     install-php-extensions ldap mcrypt
 
-ENV SSP_DEBUG=false \
+ENV SSP_HOSTNAME=localhost \
+    SSP_SERVER_PATH=/ssp \
+    SSP_DEBUG=false \
     SSP_LDAP_URL="ldap://localhost" \
     SSP_LDAP_STARTTLS=false \
     SSP_LDAP_BINDDN="cn=manager,dc=example,dc=com" \
@@ -89,7 +91,6 @@ ENV SSP_DEBUG=false \
     SSP_MAIL_WORDWRAP=0 \
     SSP_MAIL_CHARSET="utf-8" \
     SSP_MAIL_PRIORITY=3 \
-    SSP_MAIL_NEWLINE="PHP_EOL" \
     SSP_USE_SMS=false \
     SSP_SMS_METHOD="mail" \
     SSP_SMS_API_LIB="lib/smsapi.inc.php" \
@@ -104,7 +105,7 @@ ENV SSP_DEBUG=false \
     SSP_SMS_TOKEN_LENGTH=6 \
     SSP_MAX_ATTEMPTS=3 \
     SSP_KEYPHRASE="secret" \
-    SSP_RESET_URL="$_SERVER['HTTP_X_FORWARDED_PROTO'] . \"://\" . $_SERVER['HTTP_X_FORWARDED_HOST'] . $_SERVER['SCRIPT_NAME']" \
+#    SSP_RESET_URL="$_SERVER['HTTP_X_FORWARDED_PROTO'] . \"://\" . $_SERVER['HTTP_X_FORWARDED_HOST'] . $_SERVER['SCRIPT_NAME']" \
     SSP_SHOW_HELP=false \
     SSP_LANG="en" \
     SSP_ALLOWED_LANG="" \

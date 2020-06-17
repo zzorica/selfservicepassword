@@ -80,7 +80,6 @@ $mail_contenttype = $_ENV["SSP_MAIL_CONTENTTYPE"];
 $mail_wordwrap = $_ENV["SSP_MAIL_WORDWRAP"];
 $mail_charset = $_ENV["SSP_MAIL_CHARSET"];
 $mail_priority = $_ENV["SSP_MAIL_PRIORITY"];
-$mail_newline = $_ENV["SSP_MAIL_NEWLINE"];
 $use_sms =  evalBool(getenv("SSP_USE_SMS"));
 $sms_method = $_ENV["SSP_SMS_METHOD"];
 $sms_api_lib = $_ENV["SSP_SMS_API_LIB"];
@@ -95,7 +94,7 @@ $sms_truncate_number_length = $_ENV["SSP_SMS_TRUNCATE_NUMBER_LENGTH"];
 $sms_token_length = $_ENV["SSP_SMS_TOKEN_LENGTH"];
 $max_attempts = $_ENV["SSP_MAX_ATTEMPTS"];
 $keyphrase = $_ENV["SSP_KEYPHRASE"];
-$reset_url = $_ENV["SSP_RESET_URL"];
+#$reset_url = $_ENV["SSP_RESET_URL"];
 $show_help = evalBool(getenv("SSP_SHOW_HELP"));
 $lang = $_ENV["SSP_LANG"];
 $allowed_lang = array($_ENV["SSP_ALLOWED_LANG"]);
@@ -118,4 +117,4 @@ $display_posthook_error = 0;
 #$posthook = $_ENV["SSP_POSTHOOK"];
 #$display_posthook_error = evalBool(getenv("SSP_DISPLAY_POSTHOOK_ERROR"));
 $obscure_failure_messages = array($_ENV["SSP_OBSCURE_FAILURE_MESSAGES"]);
-
+?>
