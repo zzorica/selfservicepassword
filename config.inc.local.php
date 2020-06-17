@@ -1,11 +1,11 @@
 <?php
+
 if (! function_exists('evalBool')) {
       function evalBool($value)
       {
           return (strcasecmp($value, 'true') ? false : true);
       }
 }
-
 
 $debug = evalBool(getenv("SSP_DEBUG"));
 $ldap_url = $_ENV["SSP_LDAP_URL"];
@@ -80,6 +80,13 @@ $mail_contenttype = $_ENV["SSP_MAIL_CONTENTTYPE"];
 $mail_wordwrap = $_ENV["SSP_MAIL_WORDWRAP"];
 $mail_charset = $_ENV["SSP_MAIL_CHARSET"];
 $mail_priority = $_ENV["SSP_MAIL_PRIORITY"];
+
+if ( getenv("SSP_MAIL_NEWLINE") == "" ) {
+  #$mail_newline;
+} else {
+  $mail_newline = getenv("SSP_MAIL_NEWLINE");
+}
+
 $use_sms =  evalBool(getenv("SSP_USE_SMS"));
 $sms_method = $_ENV["SSP_SMS_METHOD"];
 $sms_api_lib = $_ENV["SSP_SMS_API_LIB"];
@@ -94,14 +101,26 @@ $sms_truncate_number_length = $_ENV["SSP_SMS_TRUNCATE_NUMBER_LENGTH"];
 $sms_token_length = $_ENV["SSP_SMS_TOKEN_LENGTH"];
 $max_attempts = $_ENV["SSP_MAX_ATTEMPTS"];
 $keyphrase = $_ENV["SSP_KEYPHRASE"];
-#$reset_url = $_ENV["SSP_RESET_URL"];
+
+if ( $_ENV["SSP_RESET_URL"] == "" ) {
+  #$reset_url = $_ENV["SSP_RESET_URL"];
+} else {  
+  $reset_url = $_ENV["SSP_RESET_URL"];
+}
+
 $show_help = evalBool(getenv("SSP_SHOW_HELP"));
 $lang = $_ENV["SSP_LANG"];
 $allowed_lang = array($_ENV["SSP_ALLOWED_LANG"]);
 $show_menu = evalBool(getenv("SSP_SHOW_MENU"));
 $logo = $_ENV["SSP_LOGO"];
 $background_image = $_ENV["SSP_BACKGROUND_IMAGE"];
-$reset_request_log = $_ENV["SSP_RESET_REQUEST_LOG"];
+
+if ($_ENV["SSP_RESET_REQUEST_LOG"] == "" ) {
+  #$reset_request_log;
+} else {
+  $reset_request_log = $_ENV["SSP_RESET_REQUEST_LOG"];
+}
+
 $login_forbidden_chars = $_ENV["SSP_LOGIN_FORBIDDEN_CHARS"];
 $use_recaptcha = evalBool(getenv("SSP_USE_RECAPTCHA"));
 $recaptcha_publickey = $_ENV["SSP_RECAPTCHA_PUBLICKEY"];
@@ -111,10 +130,36 @@ $recaptcha_type = $_ENV["SSP_RECAPTCHA_TYPE"];
 $recaptcha_size = $_ENV["SSP_RECAPTCHA_SIZE"];
 $recaptcha_request_method = $_ENV["SSP_RECAPTCHA_REQUEST_METHOD"];
 $default_action = $_ENV["SSP_DEFAULT_ACTION"];
-$messages['passwordchangedextramessage'] = $_ENV["SSP_MESSAGES_PASSWRODCHANGED_EXTRAMESSAGE"];
-$messages['changehelpextramessage'] = $_ENV["SSP_MESSAGES_CHANGEHELP_EXTRAMESSAGE"];
-$display_posthook_error = 0;
-#$posthook = $_ENV["SSP_POSTHOOK"];
-#$display_posthook_error = evalBool(getenv("SSP_DISPLAY_POSTHOOK_ERROR"));
-$obscure_failure_messages = array($_ENV["SSP_OBSCURE_FAILURE_MESSAGES"]);
+
+if ($_ENV["SSP_MESSAGES_PASSWRODCHANGED_EXTRAMESSAGE"] == "" ) {
+  #$messages['passwordchangedextramessage'] 
+} else {
+  $messages['passwordchangedextramessage'] = $_ENV["SSP_MESSAGES_PASSWRODCHANGED_EXTRAMESSAGE"];
+}
+
+if ($_ENV["SSP_MESSAGES_CHANGEHELP_EXTRAMESSAGE"] == "" ) {
+  #$messages['changehelpextramessage'] 
+
+} else {
+  $messages['changehelpextramessage'] = $_ENV["SSP_MESSAGES_CHANGEHELP_EXTRAMESSAGE"];
+}
+
+if ( $_ENV["SSP_POSTHOOK"] == "") {
+  #$posthook;
+} else {
+  $posthook = $_ENV["SSP_POSTHOOK"];
+}  
+
+if ( getenv("SSP_DISPLAY_POSTHOOK_ERROR") == "" ) {
+  #$display_posthook_error;
+} else {  
+  $display_posthook_error = evalBool(getenv("SSP_DISPLAY_POSTHOOK_ERROR"));
+}
+
+if ( $_ENV["SSP_OBSCURE_FAILURE_MESSAGES"] == "" ) { 
+  #$obscure_failure_messages;
+} else {
+  $obscure_failure_messages = array($_ENV["SSP_OBSCURE_FAILURE_MESSAGES"]);
+}
+
 ?>
