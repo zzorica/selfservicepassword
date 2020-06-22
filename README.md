@@ -27,7 +27,7 @@ Now you can access it on `http://localhost:8080`. Rest of the variables and thei
 
 # Configuration parameters
 
-Variables are all taken from PHP app in the file `conf/config.inc.local.php`. Some default are changed to reflect average use (in my opinion that it). So here is the list of all the env variables that are available to be passed to the container
+Variables are all taken from PHP app defined in the file `conf/config.inc.local.php` so take a look at that file, which is commented quite well, for any extra explanation. Some defaults are changed to reflect average use (in my opinion that is). So here is the list of all the env variables that are available to be passed to the container:
 
 ### Variables related to apache setup
 env variable | default | description
