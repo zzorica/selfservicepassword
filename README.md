@@ -19,11 +19,11 @@ docker build -t zzorica/selfservicepassword github.com/zzorica/selfservicepasswo
 ```
 # Quickstart
 
-To start the container this is the minimum needed to pass to `docker run`.
+To start the container this is the minimum needed to pass to `docker run`. Of course generate your own string for `keyphrase`.
 ```bash
 docker run -d -p 8080:80 -e SSP_KEYPHRASE="OoSaiFeeChee3jeiphai5Aevae1ahRie" --name ssp zzorica/selfservicepassword:latest
 ```
-Now you can access it on `http://localhost:8080`. Rest of variables and their defaults are in table below.
+Now you can access it on `http://localhost:8080`. Rest of the variables and their defaults are in table below.
 
 # Configuration parameters
 
