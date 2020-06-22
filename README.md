@@ -8,12 +8,12 @@ PHP application is the one at https://github.com/ltb-project/self-service-passwo
 
 # Installation
 
-Automated build image can be found on [Dockerhub](https://hub.docker.com/r/zzorica/selfservicepassword). To build just run:
+Use build image from Dockerhub:
 ```bash
 docker pull zzorica/selfservicepassword:latest
 ```
 
-Or you can build it using this repo with:
+Or you can build your own using this repo with:
 ```bash
 docker build -t zzorica/selfservicepassword github.com/zzorica/selfservicepassword
 ```
