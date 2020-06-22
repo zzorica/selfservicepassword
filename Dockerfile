@@ -29,7 +29,7 @@ ENV SSP_HOSTNAME=localhost \
     SSP_LDAP_FILTER="(&(objectClass=person)(uid={login}))" \
     SSP_AD_MODE=false \
     SSP_AD_OPTIONS_FORCE_UNLOCK=false \
-    SSP_AD_OPTIONS_FORCE_PWD_CHANGE=fales \
+    SSP_AD_OPTIONS_FORCE_PWD_CHANGE=false \
     SSP_AD_OPTIONS_CHANGE_EXPIRED_PASSWORD=false \
     SSP_SAMBA_MODE=false \
     SSP_SAMBA_OPTIONS_MIN_AGE=5 \
@@ -91,7 +91,7 @@ ENV SSP_HOSTNAME=localhost \
     SSP_MAIL_WORDWRAP=0 \
     SSP_MAIL_CHARSET="utf-8" \
     SSP_MAIL_PRIORITY=3 \
-    SSP_MAIL_NEWLINE = "" \
+    SSP_MAIL_NEWLINE="" \
     SSP_USE_SMS=false \
     SSP_SMS_METHOD="mail" \
     SSP_SMS_API_LIB="lib/smsapi.inc.php" \
