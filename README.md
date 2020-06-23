@@ -1,5 +1,11 @@
 # selfservicepassword
-Containerized PHP application for LDAP password management
+Containerized PHP application for LDAP password management. User reset or change, reset by email or sms, enforce password security policy, security questions, set user ssh key etc.
+
+* [Instalation](#installation)
+* [Quickstart](#quickstart)
+* [Kubernetes](#kubernetes)
+* [Configuration parameters](#configuration-parameters)
+---
 
 # Introduction
 
@@ -25,6 +31,12 @@ docker run -d -p 8080:80 -e SSP_KEYPHRASE="OoSaiFeeChee3jeiphai5Aevae1ahRie" --n
 ```
 Now you can access it on `http://localhost:8080`. Rest of the variables and their defaults are in table below.
 
+# Kubernetes
+
+Example of kubernetes deployment of ssp service can be found in `examples/k8s` folder. All passwords are setup using secrets, and service is exposed via ClusterIP. You can access it for example via ingress. Depending on your cluster environment of course. Depending on your ingress rules don't forget to adjust apache variables to reflect those rules (`SSP_HOSTNAME` and `SSP_SERVER_PATH`).
+
+Also `SSP_LOGO` and `SSP_BACKGROUND_IMAGE` environment variables are set to empty string so it doesn't use default images. Looks much cleaner.
+
 # Configuration parameters
 
 Variables are all taken from PHP app defined in the file `conf/config.inc.local.php` so take a look at that file, which is commented quite well, for any extra explanation. Some defaults are changed to reflect average use (in my opinion that is). So here is the list of all the env variables that are available to be passed to the container:
@@ -35,7 +47,7 @@ env variable | default | description
 SSP_HOSTNAME | localhost | apache `ServerName`
 SSP_SERVER_PATH | /ssp | apache `ServerPath`
 
-### Varables related to selfservicepassword PHP application
+### Variables related to selfservicepassword PHP application
 env variable | default
 ------------ | -------------
 SSP_LDAP_URL | ldap://localhost 
